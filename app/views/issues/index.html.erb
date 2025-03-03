@@ -2,9 +2,11 @@
 
 <ul>
   <% @issues.each do |issue| %>
-    <li>
-      <%= issue.title %>
-      <%= issue.description %>
-    </li>
+    <%= link_to issue_path(issue) do  %>
+      <li>
+        <%= issue.title %>
+        <%= issue.description %>
+      </li>
+    <% end %>
   <% end %>
 </ul>
