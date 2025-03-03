@@ -1,0 +1,12 @@
+<h1>All issues</h1>
+
+<ul>
+  <% @issues.each do |issue| %>
+    <%= link_to issue_path(issue) do  %>
+      <li>
+        <%= issue.title %>
+        <%= issue.description %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
