@@ -2,7 +2,9 @@
 
 <ul>
   <% @issues.each do |issue| %>
-    <li><%= issue.title %></li>
-    <li><%= issue.description %></li>
+    <li>
+      <%= issue.title %>
+      <%= issue.description %>
+    </li>
   <% end %>
 </ul>
