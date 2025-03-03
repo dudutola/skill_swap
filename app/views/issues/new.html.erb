@@ -1,0 +1,7 @@
+<%= simple_form_for(@issue) do |f| %>
+  <%= f.input :title %>
+  <%= f.text_area :description %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "Home", root_path %>
