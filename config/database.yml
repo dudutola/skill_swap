@@ -79,6 +79,7 @@ test:
 #
 production:
   <<: *default
-  database: skill_swap_production
-  username: skill_swap
-  password: <%= ENV["SKILL_SWAP_DATABASE_PASSWORD"] %>
+  # database: skill_swap_production
+  # username: skill_swap
+  # password: <%= ENV["SKILL_SWAP_DATABASE_PASSWORD"] %>
+  url: <%= ENV["SKILL_SWAP_DATABASE_URL"] %>
