@@ -10,11 +10,19 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-
 @import "components/banner";
 @import "components/card";
 @import "components/filter";
+@import "components/footer";
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
 
 .container {
+  flex: 1;
   margin-top: 38px;
 }
