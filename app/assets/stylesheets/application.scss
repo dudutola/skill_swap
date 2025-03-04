@@ -12,4 +12,9 @@
 @import "pages/index";
 
 @import "components/banner";
+@import "components/card";
 @import "components/filter";
+
+.container {
+  margin-top: 38px;
+}

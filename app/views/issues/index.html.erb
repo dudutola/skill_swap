@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+<div class="banner mt-3" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
   <div class="container mx-5">
     <h1>Skill Swap makes <strong>learning</strong> and <strong>teaching</strong> effortless!</h1>
     <p>Empower yourself and others by swapping skills and growing together.</p>
@@ -24,16 +24,24 @@
   </div>
 </section>
 
-<h1>All issues</h1>
-<%= link_to "Add new issue", new_issue_path %>
+<section class="offers py-">
+  <h2 class="mb-4">Browse Skills & Offers</h2>
 
-<ul>
-  <% @issues.each do |issue| %>
-    <%= link_to issue_path(issue) do  %>
-      <li>
-        <%= issue.title %>
-        <%= issue.description %>
-      </li>
+  <div class="cards">
+    <% @issues.each do |issue| %>
+      <%= link_to issue_path(issue), class: "link" do  %>
+        <div class="card-product">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="card-product-avatar" />
+          <div class="card-product-infos">
+            <div class="d-flex justify-content-between pb-2">
+              <h3>maria</h3>
+              <p class="posted-time text-secondary"><%= time_ago_in_words(issue.created_at) %> ago</p>
+            </div>
+            <h4 class="mb-0"><%= issue.title %></h4>
+            <p><%= issue.description %></p>
+          </div>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
+  </div>
+</section>
