@@ -1,3 +1,37 @@
-<h1><%= @issue.title %></h1>
+<%= link_to root_path, class: "home-link" do %>
+  <i class="fas fa-home"></i> Home
+<% end %>
 
-<%= link_to "Home", root_path %>
+<div class="d-flex">
+  <section class="issue-show">
+    <div class="issue-title">
+      <h1><%= @issue.title %></h1>
+    </div>
+
+    <div class="issue-author">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png" alt="User photo" class="user-avatar">
+      <h2>Maria Sla</h2>
+    </div>
+
+    <hr class="divider">
+
+    <div class="issue-description-card">
+      <p><strong>Description:</strong></p>
+      <p><%= @issue.description %></p>
+    </div>
+  </section>
+
+  <section>
+    <%= link_to "Help Me", root_path, class: "btn"  %>
+  </section>
+</div>
+
+
+<div class="user-profile mt-5">
+  <h3>Get to know Maria Sla</h3>
+
+  <div class="user-profile-author">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png" alt="User photo" class="user-profile-avatar">
+    <h4>Maria Sla</h4>
+  </div>
+</div>
