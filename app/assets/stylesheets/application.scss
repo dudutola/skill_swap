@@ -10,6 +10,9 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "components/banner";
+@import "components/card";
+@import "components/filter";
 @import "components/footer";
 
 body {
@@ -21,4 +24,5 @@ body {
 
 .container {
   flex: 1;
+  margin-top: 38px;
 }
