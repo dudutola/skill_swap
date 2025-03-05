@@ -12,7 +12,8 @@
       background: #F4F4F4;
     }
     .banner {
-      background: rgb(110, 136, 133);
+      background:rgb(110, 136, 133);
+      border-shadow: 0 5px 10px rgba(0, 123, 255, 0.2);
       color: white;
       padding: 50px;
       text-align: center;
@@ -21,7 +22,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 100px;
+      gap: 100px
     }
     .banner .welcome-message {
       flex: 1;
@@ -29,31 +30,29 @@
     }
     .login-form-container {
       margin-top: 50px;
-      width: 30%;
+      width: 30%
     }
     .btn {
       color: white;
-      background: black;
       border-color: black;
+      background: black;
       outline: none;
     }
+    
     .btn:hover {
-      background-color: #333;
-      border-color: #333;
+    background-color: #333; 
+    border-color: #555;
     }
+
     .btn:active {
-      background-color: #222;
-      border-color: #222;
-      color: white;
+    background-color: #222; 
+    border-color: #444;
     }
     .btn:focus {
-      outline: none;
-      box-shadow: none;
+    outline: none;
+    box-shadow: none;
     }
-    .devise-links a {
-      color: black;
-      text-decoration: none
-    }
+   
   </style>
 </head>
 <body>
@@ -69,7 +68,7 @@
       <div class="login-form-container">
         <h3 class="text-center">Log in</h3>
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="form-inputs mb-3">
+          <div class="form-inputs mb-3 ">
             <%= f.input :email, 
                         required: false, 
                         autofocus: true, 
@@ -86,7 +85,7 @@
               <label class="form-check-label" for="remember_me"></label>
             </div>
           <% end %>
-          <%= f.button :submit, "Log in", class: "btn btn-block w-100" %>
+          <%= f.button :submit, "Log in", class: "btn btn-primary btn-block w-100" %>
         <% end %>
         <%= render "devise/shared/links" %>
       </div>
