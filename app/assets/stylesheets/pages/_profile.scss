@@ -1,0 +1,21 @@
+#profile-banner {
+  padding: 50px 0;
+  background-color: #19600a;
+
+  .container {
+    margin-top: 0;
+  }
+}
+
+.profile {
+  display: flex;
+  gap: 40px;
+  align-content: center;
+  align-items: center;
+
+  &-avatar {
+    width: 16%;
+    border-radius: 8px;
+    margin-left: 100px;
+  }
+}

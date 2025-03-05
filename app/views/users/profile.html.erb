@@ -1,0 +1,10 @@
+<div class="banner" id="profile-banner">
+  <div class="container profile">
+    <%= image_tag current_user.github_avatar_url || "avataaars.png", class: "profile-avatar", alt: "User image" %>
+    <div class="profile-infos">
+      <h1>@<%= current_user.github_username %></h1>
+      <p><%= current_user.github_name %></p>
+      <span><i class="fa-solid fa-location-dot"></i></span>
+    </div>
+  </div>
+</div>
