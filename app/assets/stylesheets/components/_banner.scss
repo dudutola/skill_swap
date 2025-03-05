@@ -3,12 +3,12 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 115px 5px;; // Adjusted padding for better responsiveness
+  padding: 115px 5px; // Adjusted padding for better responsiveness
   border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 80px;
+  gap: 120px; // Increased the gap for more space between content and image
 
   &-content {
     flex: 1; // Takes available space
@@ -17,17 +17,15 @@
 
   &-image {
     background: none;
-    background-color: transparent;
+    background-color:#0056B3;
     width: 400px; // Adjust image size
     max-width: 100%;
     height: auto;
     border-radius: 10px;
     box-shadow: none;
-    
-
+    margin-left: 80px; // Add margin to create more space between image and content
   }
-  
-  
+
   h1 {
     margin: 0;
     color: white;
@@ -52,9 +50,11 @@
     &-image {
       width: 100%;
       max-width: 300px;
+      margin-left: 0; // Remove margin for smaller screens
     }
   }
 }
+
 
 
 
