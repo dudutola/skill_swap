@@ -12,11 +12,12 @@ class User < ApplicationRecord
     provider = access_token.provider
     random_string = Devise.friendly_token[0, 6]
     uid = access_token.uid.presence || SecureRandom.uuid
+    location = access_token.extra.raw_info['location'].presence || "Unknown"
 
     email = data['email'].presence || "user_#{random_string}@email.com"
     nickname = data['nickname'].presence || "user_#{random_string}"
     name = data['name'].presence || "No Name #{random_string}"
-    image = data['image'].presence || "default_avatar.png"
+    image = data['image'].presence || "avataaars.png"
 
     user = User.where(email: data['email']).first
 
@@ -28,6 +29,7 @@ class User < ApplicationRecord
         github_username: nickname,
         github_name: name,
         github_avatar_url: image,
+        github_location: location,
         provider: provider || "github",
         github_uid: uid
       )
