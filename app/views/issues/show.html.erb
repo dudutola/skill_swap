@@ -9,8 +9,8 @@
     </div>
 
     <div class="issue-author">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png" alt="User photo" class="user-avatar">
-      <h2>Maria Sla</h2>
+      <%= image_tag @issue.user.github_avatar_url, alt: "User photo", class: "user-avatar" %>
+      <h2><%= @issue.user.github_name %></h2>
     </div>
 
     <hr class="divider">
@@ -22,16 +22,15 @@
   </section>
 
   <section>
-    <%= link_to "Help Me", root_path, class: "btn"  %>
+    <%= link_to "Help Me", root_path, class: "btn" %>
   </section>
 </div>
 
-
 <div class="user-profile mt-5">
-  <h3>Get to know Maria Sla</h3>
+  <h3>Get to know <%= @issue.user.github_name %></h3>
 
-  <div class="user-profile-author">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png" alt="User photo" class="user-profile-avatar">
-    <h4>Maria Sla</h4>
-  </div>
+  <%= link_to user_path(@issue.user), class: "user-profile-author" do %>
+    <%= image_tag @issue.user.github_avatar_url, alt: "User photo", class: "user-profile-avatar" %>
+    <h4><%= @issue.user.github_name %></h4>
+  <% end %>
 </div>
