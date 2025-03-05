@@ -75,3 +75,5 @@ end
 
 gem "ostruct"
 gem "devise"
+gem "omniauth-github", "~> 2.0.0"
+gem "omniauth-rails_csrf_protection"
