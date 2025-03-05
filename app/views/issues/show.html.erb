@@ -31,7 +31,9 @@
 
   <%= link_to user_path(@issue.user), class: "user-profile-author" do %>
     <%= image_tag @issue.user.github_avatar_url, alt: "User photo", class: "user-profile-avatar" %>
-    <h4><%= @issue.user.github_name %></h4>
-    <p><%= @issue.user.github_location %></p>
+    <div class="d-flex flex-column">
+      <h4><%= @issue.user.github_name %></h4>
+      <p class="text-dark"><%= @issue.user.github_location %></p>
+    </div>
   <% end %>
 </div>

@@ -17,13 +17,17 @@
   <div class="profile-offers">
     <h3>My Offers</h3>
     <div class="offers-created">
-      <ul class="list-unstyled">
-        <% @user.issues.each do |issue| %>
-          <li>-
-            <%= link_to issue.title, issue_path(issue) %>
-          </li>
-        <% end %>
-      </ul>
+      <% if current_user.issues.any? %>
+        <ul class="list-unstyled">
+          <% @user.issues.each do |issue| %>
+            <li>-
+              <%= link_to issue.title, issue_path(issue) %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No issues yet.</p>
+      <% end %>
     </div>
   </div>
 
