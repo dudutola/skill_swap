@@ -17,7 +17,7 @@
   <div class="profile-offers">
     <h3>My Offers</h3>
     <div class="offers-created">
-      <% if current_user.issues.any? %>
+      <% if @user.issues.any? %>
         <ul class="list-unstyled">
           <% @user.issues.each do |issue| %>
             <li>-
