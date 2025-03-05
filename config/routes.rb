@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :issues, only: [ :show, :new, :create ]
 
-  resources :users, only: [ :show ] do
-    get "profile", on: :member, to: "user#profile", as: "profile"
-  end
+  get "profile", to: "users#profile", as: "profile_user"
+  resources :users, only: [:show]
 end
