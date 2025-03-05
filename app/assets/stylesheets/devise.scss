@@ -1,0 +1,99 @@
+
+body {
+  font-family: Arial, sans-serif;
+  background: #F4F4F4;
+}
+
+// Banner section
+.banner {
+  background: rgb(110, 136, 133);
+  box-shadow: 0 5px 10px rgba(0, 123, 255, 0.2);
+  padding: 50px;
+  text-align: center;
+  color: rgb(245, 242, 242);
+
+
+  .label, .form-inputs label, .form-check-label {
+    color: white !important; 
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 100px;
+  }
+
+  .welcome-message {
+    flex: 1;
+    text-align: left;
+  }
+}
+
+// Login form styles
+.login-form-container {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+
+  h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: black; 
+  }
+
+  .form-inputs {
+    margin-bottom: 16px;
+  }
+
+  .form-inputs label {
+    color: black; 
+  }
+
+  .form-inputs .email-field label, 
+  .form-inputs .password-field label {
+    color: rgb(103, 103, 103); 
+  }
+}
+
+body .btn, 
+body input[type="submit"], 
+body input[type="button"], 
+body input[type="reset"], 
+body .form-check-input {
+  color: white !important;  
+  background: black !important;  
+  border-color: black !important;  
+  box-shadow: none !important; 
+}
+
+body .btn:hover, 
+body input[type="submit"]:hover, 
+body input[type="button"]:hover, 
+body input[type="reset"]:hover {
+  background-color: black !important;  
+  border-color: black !important;  
+}
+
+/* "Remember me" checkbox */
+body .form-check-label  {
+  color: rgb(255, 255, 255) !important;  
+}
+
+body .form-check-input {
+  background-color: black !important;  
+  border-color: black !important;  
+}
+
+/*  styling for checkbox */
+body .form-check-input:focus {
+  box-shadow: none !important;  
+  border-color: black !important;  
+}
+
+
+
+
