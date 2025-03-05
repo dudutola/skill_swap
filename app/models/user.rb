@@ -7,8 +7,8 @@ class User < ApplicationRecord
 
   has_many :issues, dependent: :destroy
 
-  geocoded_by :github_location
-  after_validation :geocode, if: :github_location_changed?
+  # geocoded_by :github_location
+  # after_validation :geocode, if: :github_location_changed?
 
   def self.from_omniauth(access_token)
     data = access_token.info
