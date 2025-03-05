@@ -7,6 +7,16 @@
   flex-grow: 0;
 }
 
+.navbar-nav .nav-item {
+  margin-right: 10px; 
+}
+
+.navbar-nav .nav-item:not(:last-child) {
+  margin-right: 25px; 
+}
+
+
+
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
