@@ -19,6 +19,7 @@ Issue.destroy_all
     password: 'password',
     github_username: Faker::Internet.username,
     github_name: Faker::Name.name,
+    github_location: Faker::Address.country,
     github_avatar_url: "https://i.pravatar.cc/150?img=#{rand(1..70)}",
     provider: 'github',
     github_uid: SecureRandom.uuid

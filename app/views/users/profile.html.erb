@@ -4,7 +4,10 @@
     <div class="profile-infos">
       <h1>@<%= current_user.github_username %></h1>
       <p><%= current_user.github_name %></p>
-      <span><i class="fa-solid fa-location-dot"></i></span>
+      <span class="d-flex align-items-baseline gap-2">
+        <i class="fa-solid fa-location-dot text-center fs-5 text-white"></i>
+        <p class="text-center text-white"><%= current_user.github_location %></p>
+      </span>
     </div>
   </div>
 </div>
