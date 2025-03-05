@@ -1,0 +1,33 @@
+<div class="banner" id="profile-banner">
+  <div class="container profile">
+    <%= image_tag @user.github_avatar_url || "avataaars.png", class: "profile-avatar", alt: "User image" %>
+    <div class="profile-infos">
+      <h1>@<%= @user.github_username %></h1>
+      <p><%= @user.github_name %></p>
+      <span><i class="fa-solid fa-location-dot"></i></span>
+    </div>
+  </div>
+</div>
+
+<div class="profile-container d-flex justify-content-between m-5">
+
+  <div class="profile-offers">
+    <h3>My Offers</h3>
+    <div class="offers-created">
+      <ul>
+        <% @user.issues.each do |issue| %>
+          <li>
+            <%= link_to issue.title, issue_path(issue) %>
+            <p><%= issue.description.truncate(100) %></p>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="profile-map">
+    <h3>View Map</h3>
+
+    <div id="map"></div>
+  </div>
+</div>
