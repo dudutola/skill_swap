@@ -31,14 +31,14 @@
     <% @issues.each do |issue| %>
       <%= link_to issue_path(issue), class: "link" do  %>
         <div class="card-product">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="card-product-avatar" />
+          <img src="<%= issue.user.github_avatar_url %>" class="card-product-avatar" alt="<%= issue.user.github_name %>" />
           <div class="card-product-infos">
             <div class="d-flex justify-content-between pb-2">
-              <h3>maria</h3>
+              <h3><%= issue.user.github_name %></h3>
               <p class="posted-time text-secondary"><%= time_ago_in_words(issue.created_at) %> ago</p>
             </div>
             <h4 class="mb-0"><%= issue.title %></h4>
-            <p><%= issue.description %></p>
+            <p><%= truncate(issue.description, length: 100) %></p>
           </div>
         </div>
       <% end %>
