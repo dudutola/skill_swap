@@ -11,3 +11,25 @@
     </div>
   </div>
 </div>
+
+
+<div class="profile-container d-flex justify-content-between m-5">
+
+  <div class="profile-offers">
+    <h3>My Offers</h3>
+    <div class="offers-created">
+      <% if current_user.issues.any? %>
+        <ul class="list-unstyled">
+          <% current_user.issues.each do |issue| %>
+            <li>-
+              <%= link_to issue.title, issue_path(issue) %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No issues yet.</p>
+      <% end %>
+    </div>
+  </div>
+
+</div>
