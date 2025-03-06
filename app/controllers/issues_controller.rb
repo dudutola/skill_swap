@@ -6,7 +6,7 @@ class IssuesController < ApplicationController
   end
 
   def show
-    @issue = Issue.find(params[:id])
+    @appointment = Appointment.new
   end
 
   def new
@@ -25,11 +25,9 @@ class IssuesController < ApplicationController
   end
 
   def edit
-    @issue = Issue.find(params[:id])
   end
 
   def update
-    @issue = Issue.find(params[:id])
     if @issue.update(issue_params)
       redirect_to @issue, notice: "Issue was successfully updated."
     else
