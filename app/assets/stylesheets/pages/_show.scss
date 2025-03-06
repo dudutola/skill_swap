@@ -18,9 +18,15 @@
 }
 
 
+.issues-details {
+  gap: 40px;
+}
+
+
 .issue-show {
-  width: 80%;
-  margin: 0 auto;
+  width: 64%;
+  // margin: 0 auto;
+  margin-left: 28px;
   padding: 20px;
 
   .issue-title h1 {
@@ -78,7 +84,7 @@
   cursor: pointer;
   display: block;
   width: 100%;
-  max-width: 200px;
+  // max-width: 200px;
   margin: 0 auto;
   font-size: 1.1em;
   text-decoration: none;
@@ -87,7 +93,6 @@
     background-color: #0056b3;
   }
 }
-
 
 .user-profile {
   & h3 {
@@ -108,4 +113,9 @@
     padding: 4px;
     background-color: #a7bca2;
   }
+}
+
+
+.appointment-toggle {
+  margin-top: 28px;
 }

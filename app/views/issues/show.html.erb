@@ -1,4 +1,4 @@
-<div class="d-flex">
+<div class="d-flex issues-details">
   <section class="issue-show">
     <div class="issue-title">
       <h1><%= @issue.title %></h1>
@@ -19,13 +19,23 @@
     </div>
   </section>
 
-  <section>
-    <%= link_to "Help #{@issue.user.github_name}", root_path, class: "btn" %>
-  </section>
-</div>
+<section data-controller="toggle-appointment" class="appointment-toggle">
+  <%= link_to "Schedule an appointment", "#", class: "btn btn-primary", data: { action: "click->toggle-appointment#toggleForm" } %>
 
-<%# or schedule an appointment and display it here directly %>
-<%= link_to "Schedule Appointment", new_issue_appointment_path(@issue), class: "btn btn-primary" %>
+  <div id="appointment-form" class="d-none" data-toggle-appointment-target="form">
+
+    <%= simple_form_for [@issue, @appointment] do |f| %>
+      <div>
+        <%= f.input :start_time, as: :datetime, html5: true %>
+      </div>
+      <div>
+        <%= f.input :end_time, as: :datetime, html5: true %>
+      </div>
+      <%= f.submit "Create Appointment", class: "btn btn-success" %>
+    <% end %>
+  </div>
+</section>
+</div>
 
 <div class="user-profile mt-5">
   <h3>Get to know <%= @issue.user.github_name %></h3>
