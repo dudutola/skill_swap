@@ -123,16 +123,6 @@ body .form-check-input:checked {
   border-color: black !important;
 }
 
-/* Checkmark when checked */
-body .form-check-input:checked::after {
-  content: "✔";
-  font-size: 14px;
-  color: white;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 
 /* Focus styling */
 body .form-check-input:focus {
