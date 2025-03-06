@@ -5,6 +5,7 @@ class IssuesController < ApplicationController
 
   def show
     @issue = Issue.find(params[:id])
+    @appointment = Appointment.new
   end
 
   def new

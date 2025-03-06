@@ -12,24 +12,48 @@
   </div>
 </div>
 
+<div class="profile-container d-flex justify-content-between m-5" data-controller="toggle">
+  <div class="d-flex flex-column w-100">
 
-<div class="profile-container d-flex justify-content-between m-5">
-
-  <div class="profile-offers">
-    <h3>My Offers</h3>
-    <div class="offers-created">
-      <% if current_user.issues.any? %>
-        <ul class="list-unstyled">
-          <% current_user.issues.each do |issue| %>
-            <li>-
-              <%= link_to issue.title, issue_path(issue) %>
-            </li>
-          <% end %>
-        </ul>
-      <% else %>
-        <p>No issues yet.</p>
-      <% end %>
+    <!-- My Offers Section -->
+    <div class="profile-offers border rounded p-3 mb-3 shadow-sm">
+      <h3 class="toggle-header fw-bold" data-action="click->toggle#toggle" data-target="offers-content">My Issues</h3>
+      <p class="text-muted">Click to view the issues you have created.</p>
+      <div id="offers-content" data-toggle-target="content" class="toggle-content d-none">
+        <% if current_user.issues.any? %>
+          <ul class="list-unstyled">
+            <% current_user.issues.each do |issue| %>
+              <li>-
+                <%= link_to issue.title, issue_path(issue) %>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>No issues yet.</p>
+        <% end %>
+      </div>
     </div>
-  </div>
 
+    <!-- Appointments Section -->
+    <div class="profile-appointments border rounded p-3 shadow-sm">
+      <h3 class="toggle-header fw-bold" data-action="click->toggle#toggle" data-target="appointments-content">Tutoring</h3>
+      <p class="text-muted">Click to view your scheduled appointments.</p>
+      <div id="appointments-content" data-toggle-target="content" class="toggle-content d-none">
+        <% if current_user.given_appointments.any? %>
+          <div class="appointments-container">
+            <% current_user.given_appointments.each do |appointment| %>
+              <div class="appointment-card mb-3 py-2 px-4 border rounded shadow-sm">
+                <p class="my-1"><strong>Appointment with: </strong> <%= appointment.pupil.github_username.capitalize %></p>
+                <p class="my-1"><strong>Start Time: </strong> <%= appointment.start_time.strftime("%b %d, %Y %H:%M") %></p>
+                <p class="my-1"><strong>End Time: </strong> <%= appointment.end_time.strftime("%b %d, %Y %H:%M") %></p>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <p>No tutoring scheduled yet.</p>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
 </div>
