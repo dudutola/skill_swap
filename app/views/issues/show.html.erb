@@ -1,21 +1,19 @@
-<%= link_to root_path, class: "home-link" do %>
-  <i class="fas fa-home"></i> Home
-<% end %>
-
-<div class="d-flex">
+<div class="d-flex issues-details">
   <section class="issue-show">
     <div class="issue-title">
       <h1><%= @issue.title %></h1>
     </div>
 
     <div class="issue-author">
-      <%= image_tag @issue.user.github_avatar_url, alt: "User photo", class: "user-avatar" %>
-      <h2><%= @issue.user.github_name %></h2>
+      <%= link_to user_path(@issue.user), class: "user-profile-author" do %>
+        <%= image_tag @issue.user.github_avatar_url, alt: "User photo", class: "user-avatar" %>
+        <h2 class="text-dark fs-4 text-decoration-underline fw-bold"><%= @issue.user.github_name %></h2>
+      <% end %>
     </div>
 
     <hr class="divider">
 
-    <div class="issue-description-card">
+    <div class="issue-description-card bg-white">
       <p><strong>Description:</strong></p>
       <p><%= @issue.description %></p>
 
@@ -25,12 +23,23 @@
     </div>
   </section>
 
-  <section>
-    <%= link_to "Help #{@issue.user.github_name}", root_path, class: "btn" %>
-  </section>
-</div>
+<section data-controller="toggle-appointment" class="appointment-toggle">
+  <%= link_to "Schedule an appointment", "#", class: "btn btn-primary", data: { action: "click->toggle-appointment#toggleForm" } %>
 
-<%= link_to "Schedule Appointment", new_issue_appointment_path(@issue), class: "btn btn-primary" %>
+  <div id="appointment-form" class="d-none" data-toggle-appointment-target="form">
+
+    <%= simple_form_for [@issue, @appointment] do |f| %>
+      <div>
+        <%= f.input :start_time, as: :datetime, html5: true %>
+      </div>
+      <div>
+        <%= f.input :end_time, as: :datetime, html5: true %>
+      </div>
+      <%= f.submit "Create Appointment", class: "btn btn-success" %>
+    <% end %>
+  </div>
+</section>
+</div>
 
 <div class="user-profile mt-5">
   <h3>Get to know <%= @issue.user.github_name %></h3>
