@@ -6,7 +6,7 @@
 
     <div class="issue-author">
       <%= link_to user_path(@issue.user), class: "user-profile-author" do %>
-        <%= image_tag @issue.user.github_avatar_url, alt: "User photo", class: "user-avatar" %>
+        <%= image_tag @issue.user.github_avatar_url, alt: "User photo", class: "user-avatar green-circle user-avatar-show" %>
         <h2 class="text-dark fs-4 text-decoration-underline fw-bold"><%= @issue.user.github_name %></h2>
       <% end %>
     </div>
@@ -18,7 +18,7 @@
       <p><%= @issue.description %></p>
 
       <%= link_to edit_issue_path(@issue) do %>
-      <i class="fas fa-edit"></i> 
+      <i class="fas fa-edit"></i>
       <% end %>
     </div>
   </section>
