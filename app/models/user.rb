@@ -7,8 +7,8 @@ class User < ApplicationRecord
 
   has_many :issues, dependent: :destroy
 
-  has_many :given_appointments, foreign_key: :tutor_id, class_name: "Appointment"
-  has_many :received_appointments, foreign_key: :pupil_id, class_name: "Appointment"
+  has_many :given_appointments, foreign_key: :tutor_id, class_name: "Appointment", dependent: :destroy
+  has_many :received_appointments, foreign_key: :pupil_id, class_name: "Appointment", dependent: :destroy
 
   # geocoded_by :github_location
   # after_validation :geocode, if: :github_location_changed?
