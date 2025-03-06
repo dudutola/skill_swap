@@ -1,7 +1,3 @@
-<%= link_to root_path, class: "home-link" do %>
-  <i class="fas fa-home"></i> Home
-<% end %>
-
 <div class="d-flex">
   <section class="issue-show">
     <div class="issue-title">
@@ -9,13 +5,15 @@
     </div>
 
     <div class="issue-author">
-      <%= image_tag @issue.user.github_avatar_url, alt: "User photo", class: "user-avatar" %>
-      <h2><%= @issue.user.github_name %></h2>
+      <%= link_to user_path(@issue.user), class: "user-profile-author" do %>
+        <%= image_tag @issue.user.github_avatar_url, alt: "User photo", class: "user-avatar" %>
+        <h2 class="text-dark fs-4 text-decoration-underline fw-bold"><%= @issue.user.github_name %></h2>
+      <% end %>
     </div>
 
     <hr class="divider">
 
-    <div class="issue-description-card">
+    <div class="issue-description-card bg-white">
       <p><strong>Description:</strong></p>
       <p><%= @issue.description %></p>
     </div>
@@ -26,6 +24,7 @@
   </section>
 </div>
 
+<%# or schedule an appointment and display it here directly %>
 <%= link_to "Schedule Appointment", new_issue_appointment_path(@issue), class: "btn btn-primary" %>
 
 <div class="user-profile mt-5">
