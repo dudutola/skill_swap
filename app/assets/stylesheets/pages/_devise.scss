@@ -1,0 +1,147 @@
+// Banner section
+.banner-devise {
+  background: rgb(110, 136, 133);
+  box-shadow: 0 5px 10px rgba(0, 123, 255, 0.2);
+  padding: 50px;
+  text-align: center;
+  color: rgb(245, 242, 242);
+  border-radius: 10px;
+
+  .label, .form-inputs label, .form-check-label {
+    color: rgb(0, 0, 0) !important;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 100px;
+  }
+
+  .welcome-message {
+    flex: 1;
+    text-align: left;
+  }
+}
+
+// Login form styles
+.login-form-container {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: black;
+  }
+
+  .form-inputs {
+    margin-bottom: 16px;
+    width: 100%; /* Ensure input fields are full width */
+  }
+
+  .form-inputs label {
+    color: black;
+  }
+
+  .form-inputs .email-field label,
+  .form-inputs .password-field label {
+    color: rgb(103, 103, 103);
+  }
+}
+
+// Global button styling
+
+.button-style {
+  color: white !important;
+  background: black !important;
+  border: 2px solid black !important;
+  box-shadow: none !important;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  align-items: center;
+  margin-top: 18px;
+}
+
+// Hover effect for buttons
+.button-style:hover {
+  background-color: white !important;
+  color: black !important;
+  align-items: center;
+}
+
+/* Apply the global button style to all buttons */
+body .btn-lp,
+body form.button_to button,
+body input[type="submit"],
+body input[type="button"],
+body input[type="reset"] {
+  @extend .button-style;
+}
+
+
+/* "Remember me" checkbox */
+body .form-check {
+  display: flex;
+  min-height: 1.5rem;
+  padding-left: 5px;
+  margin-bottom: 0.125rem;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 21px;
+}
+
+body .form-check-label {
+  color: rgb(0, 0, 0) !important;
+}
+
+/* Default checkbox style */
+body .form-check-input {
+  width: 20px;
+  height: 20px;
+  background-color: transparent !important;
+  border: 2px solid black !important;
+  box-shadow: none !important;
+  appearance: none;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Checkbox when checked */
+body .form-check-input:checked {
+  background-color: black !important;
+  border-color: black !important;
+}
+
+/* Checkmark when checked */
+body .form-check-input:checked::after {
+  content: "✔";
+  font-size: 14px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Focus styling */
+body .form-check-input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: black !important;
+}
+
+
+
+
+
