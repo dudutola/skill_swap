@@ -106,14 +106,19 @@
     height: 100px;
     border-radius: 50%;
     margin-right: 16px;
+    padding: 4px;
+    background-color: #a7bca2;
   }
 
-  .user-profile-author {
-    text-decoration: none;
-    cursor: pointer;
+}
 
-    h4 {
-      color: black;
-    }
+.user-profile-author {
+  text-decoration: none;
+  cursor: pointer;
+
+
+  h2,
+  h4 {
+    color: black;
   }
 }
