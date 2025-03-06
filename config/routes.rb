@@ -15,4 +15,10 @@ Rails.application.routes.draw do
 
   get "profile", to: "users#profile", as: "profile_user"
   resources :users, only: [:show]
+
+  resources :appointments do
+    member do
+      patch :confirm
+    end
+  end
 end
