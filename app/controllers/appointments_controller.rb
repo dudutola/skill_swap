@@ -1,6 +1,6 @@
 class AppointmentsController < ApplicationController
   before_action :set_issue, only: [:new, :create]
-  before_action :set_appointment, only: [:confirm]
+  before_action :set_appointment, only: [:confirm, :decline]
 
   def new
     @appointment = Appointment.new(start_time: Time.now, end_time: Time.now + 1.hour)
@@ -23,6 +23,14 @@ class AppointmentsController < ApplicationController
       redirect_to profile_user_path(current_user), notice: "Appointment confirmed!"
     else
       redirect_to profile_user_path(current_user), alert: "Failed to confirm the appointment."
+    end
+  end
+
+  def decline
+    if @appointment.update(status: "declined")
+      redirect_to profile_user_path(current_user), notice: "Appointment declined."
+    else
+      redirect_to profile_user_path(current_user), alert: "Failed to decline the appointment."
     end
   end
 
