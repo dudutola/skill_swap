@@ -1,0 +1,9 @@
+<%= simple_form_for [@issue, @appointment] do |f| %>
+  <div>
+    <%= f.input :start_time, as: :datetime, html5: true %>
+  </div>
+  <div>
+    <%= f.input :end_time, as: :datetime, html5: true %>
+  </div>
+  <%= f.submit "Create Appointment", class: "btn btn-success" %>
+<% end %>
