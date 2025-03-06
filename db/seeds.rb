@@ -49,3 +49,5 @@ issues.each do |issue|
   )
   puts "Created issue for #{user.github_name}: #{issue[:title]}"
 end
+
+# Appointment.create!(tutor: User.first, pupil: User.second, issue: Issue.all.sample, start_time: Time.new, end_time: Time.new)
