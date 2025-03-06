@@ -18,6 +18,10 @@
     <div class="issue-description-card">
       <p><strong>Description:</strong></p>
       <p><%= @issue.description %></p>
+
+      <%= link_to edit_issue_path(@issue) do %>
+      <i class="fas fa-edit"></i> 
+      <% end %>
     </div>
   </section>
 
