@@ -3,6 +3,19 @@
     <%= f.input :title, required: true, placeholder: "Enter issue title" %>
     <%= f.input :description, required: true, placeholder: "Describe the issue in detail" %>
     <%= f.input :available_on, as: :text, label: "When are you available?", placeholder: "Monday, from 10 AM till 12pm\nTuesday, 3 PM", required: true %>
+
+    <div class="field">
+      <%= f.label :tag_ids, "Tags" %>
+      <div class="tags">
+        <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) %>
+      </div>
+    </div>
+
+    <div class="field mt-3 add-tags-field">
+      <%= f.label :new_tags, "Add New Tags (comma-separated)" %>
+      <%= f.text_field :new_tags, value: "", placeholder: "E.g., Variables, Ruby, Python" %>
+    </div>
   </div>
-  <%= f.submit %>
+
+  <%= f.submit class: "mt-4" %>
 <% end %>

@@ -18,9 +18,17 @@ class IssuesController < ApplicationController
     @issue.user = current_user
 
     if @issue.save
+      if params[:issue][:new_tags].present?
+        new_tags = params[:issue][:new_tags].split(",").map(&:strip)
+        new_tags.each do |tag_name|
+          tag = Tag.find_or_create_by(name: tag_name)
+          @issue.tags << tag unless @issue.tags.include?(tag)
+        end
+      end
+
       redirect_to @issue, notice: "Issue was successfully created."
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -42,7 +50,6 @@ class IssuesController < ApplicationController
   end
 
   def issue_params
-    params.require(:issue).permit(:title, :description, :available_on)
+    params.require(:issue).permit(:title, :description, :available_on, tag_ids: [], new_tags: [])
   end
-
 end

@@ -36,12 +36,24 @@
         <div class="card-product">
           <img src="<%= issue.user.github_avatar_url %>" class="card-product-avatar green-circle" alt="<%= issue.user.github_name %>" />
           <div class="card-product-infos">
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between align-items-center">
               <h3><%= issue.user.github_name || issue.user.email.split('@').first.capitalize %></h3>
-              <p class="posted-time text-secondary"><%= time_ago_in_words(issue.created_at) %> ago</p>
+              <div>
+                <p class="posted-time text-secondary text-end"><%= time_ago_in_words(issue.created_at) %> ago</p>
+                <div>
+                  <% issue.tags.each do |tag| %>
+                    <% if ["Variables", "Ruby", "Rails", "CSS", "HTML", "Terminal", "VSCode", "JavaScript", "Linux", "PostgreSQL"].include?(tag.name) %>
+                      <span class="badge <%= tag.name.downcase %>"><%= tag.name %></span>
+                    <% else %>
+                      <span class="badge default"><%= tag.name %></span>
+                    <% end %>
+                  <% end %>
+
+                </div>
+              </div>
             </div>
             <h4 class="mb-0"><%= issue.title %></h4>
-            <p><%= truncate(issue.description, length: 100) %></p>
+            <p><%= truncate(issue.description, length: 60) %></p>
           </div>
         </div>
       <% end %>

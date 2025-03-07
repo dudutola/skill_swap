@@ -1,0 +1,82 @@
+.badge {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+  border: 2px dotted;
+  display: inline-block;
+  // margin: 5px;
+  font-size: 12px;
+}
+
+.variables {
+  // background-color: #ff5833;
+  background-color: #FF5733A1;
+  border-color: #D84E24;
+}
+
+.ruby {
+  // background-color: #1F8E00;
+  background-color: #1F8E008A;
+  border-color: #146F00;
+}
+
+.rails {
+  // background-color: #D80032;
+  background-color: #D80032AD;
+  border-color: #A70029;
+}
+
+.css {
+  // background-color: #1E90FF;
+  background-color: #1E90FFD1;
+  border-color: #1371A7;
+}
+
+.html {
+  // background-color: #FF9F00;
+  background-color: #FF9F00AB;
+  border-color: #F08300;
+}
+
+.terminal {
+  background-color: #4B4B4B99;
+  border-color: #383838;
+}
+
+.vscode {
+  // background-color: #764F94;
+  background-color: #764F94BA;
+  border-color: #5C3E75;
+}
+
+.javascript {
+  background-color: #F1E05A;
+  border-color: #C1B100;
+}
+
+.linux {
+  background-color: #000000a6;
+  border-color: #000000;
+}
+
+.postgresql {
+  // background-color: #006F53;
+  background-color: #006F539C;
+  border-color: #004F3A;
+}
+
+/* Dotted border effect */
+.badge {
+  border-style: dotted;
+}
+
+.badge.default {
+  // background-color: #f0f0f0;
+  background-color: #dad6d6;
+  color: #333;
+  padding: 5px 10px;
+  border: 2px dotted #b7b4b4;
+  font-size: 12px;
+  display: inline-block;
+  // margin: 5px;
+}
