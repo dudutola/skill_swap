@@ -8,4 +8,5 @@ class Issue < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
   validates :available_on, presence: true
+  validates :tags, presence: { message: "must have at least one tag" }
 end
