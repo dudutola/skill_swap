@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   authenticated :user do
-    root to: "issues#index", as: :authenticated_root
+    get "issues", to: "issues#index", as: :issues
   end
 
   resources :issues, only: [ :show, :new, :create, :edit, :update, :destroy ] do
@@ -26,5 +26,5 @@ Rails.application.routes.draw do
       patch :confirm
       patch :decline
     end
-  end 
+  end
 end
