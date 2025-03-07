@@ -5,4 +5,5 @@ class Issue < ApplicationRecord
   validates :user, presence: true
   validates :title, presence: true
   validates :description, presence: true
+  validates :available_on, presence: true
 end

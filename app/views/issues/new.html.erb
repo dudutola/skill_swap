@@ -1,7 +1,8 @@
 <%= simple_form_for(@issue) do |f| %>
-  <%= f.input :title %>
-  <%= f.text_area :description %>
+  <div class="form-group">
+    <%= f.input :title, required: true, placeholder: "Enter issue title" %>
+    <%= f.input :description, required: true, placeholder: "Describe the issue in detail" %>
+    <%= f.input :available_on, as: :text, label: "When are you available?", placeholder: "Monday, from 10 AM till 12pm\nTuesday, 3 PM", required: true %>
+  </div>
   <%= f.submit %>
 <% end %>
-
-<%= link_to "Home", root_path %>
