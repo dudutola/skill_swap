@@ -4,12 +4,15 @@ class AppointmentsController < ApplicationController
 
   def new
     @appointment = Appointment.new(start_time: Time.now, end_time: Time.now + 1.hour)
+    authorize @appointment
   end
 
   def create
+
     @appointment = @issue.appointments.build(appointment_params)
     @appointment.pupil_id = @issue.user.id
     @appointment.tutor_id = current_user.id
+    authorize @appointment
 
     if @appointment.save
       redirect_to @issue, notice: "Appointment scheduled successfully."
@@ -19,6 +22,7 @@ class AppointmentsController < ApplicationController
   end
 
   def confirm
+    authorize @appointment
     if @appointment.update(status: "confirmed")
       redirect_to profile_user_path(current_user), notice: "Appointment confirmed!"
     else
@@ -27,6 +31,7 @@ class AppointmentsController < ApplicationController
   end
 
   def decline
+    authorize @appointment
     if @appointment.update(status: "declined")
       redirect_to profile_user_path(current_user), notice: "Appointment declined."
     else

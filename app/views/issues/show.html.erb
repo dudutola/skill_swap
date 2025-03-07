@@ -27,7 +27,7 @@
       <p><%= @issue.description %></p>
 
       <%# only show edit to the us %>
-      <% if policy(@issue).edit? %> 
+      <% if policy(@issue).edit? %>
       <%= link_to edit_issue_path(@issue) do %>
       <i class="fas fa-edit"></i>
       <% end %>
@@ -35,7 +35,7 @@
 
       <% if policy(@issue).destroy? %>  <!-- Check if user can delete -->
       <%= link_to issue_path(@issue), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "delete-button" do %>
-      <i class="fas fa-trash-alt"></i> 
+      <i class="fas fa-trash-alt"></i>
       <% end %>
       <% end %>
 
@@ -49,10 +49,10 @@
 
       <%= simple_form_for [@issue, @appointment] do |f| %>
         <div>
-          <%= f.input :start_time, as: :datetime, html5: true %>
+          <%= f.input :start_time, as: :datetime, html5: true, input_html: { value:  Date.today }  %>
         </div>
         <div>
-          <%= f.input :end_time, as: :datetime, html5: true %>
+          <%= f.input :end_time, as: :datetime, html5: true, input_html: { value:  Date.today } %>
         </div>
         <%= f.submit "Create Appointment", class: "btn btn-success" %>
       <% end %>
