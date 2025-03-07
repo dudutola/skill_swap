@@ -7,48 +7,49 @@
     <div class="issue-author">
       <%= link_to user_path(@issue.user), class: "user-profile-author" do %>
         <%= image_tag @issue.user.github_avatar_url, alt: "User photo", class: "user-avatar green-circle user-avatar-show" %>
-        <h2 class="text-dark fs-4 text-decoration-underline fw-bold"><%= @issue.user.github_name %></h2>
+
+        <div class="d-flex flex-column">
+          <h2 class="text-dark fs-4 text-decoration-underline fw-bold"><%= @issue.user.github_name || @issue.user.email.split('@').first.capitalize %></h2>
+          <p class="text-dark"><%= @issue.user.github_location %></p>
+        </div>
       <% end %>
     </div>
 
     <hr class="divider">
 
     <div class="issue-description-card bg-white">
+      <p><strong>Availability:</strong></p>
+      <p><%= @issue.available_on %></p>
+    </div>
+
+    <div class="issue-description-card bg-white">
       <p><strong>Description:</strong></p>
       <p><%= @issue.description %></p>
 
+    <%# only show edit to the us %>
+    <% if current_user == @issue.user %>
       <%= link_to edit_issue_path(@issue) do %>
-      <i class="fas fa-edit"></i>
+        <i class="fas fa-edit"></i>
       <% end %>
+    <% end %>
+
     </div>
   </section>
 
-<section data-controller="toggle-appointment" class="appointment-toggle">
-  <%= link_to "Schedule an appointment", "#", class: "btn btn-primary", data: { action: "click->toggle-appointment#toggleForm" } %>
+  <section data-controller="toggle-appointment" class="appointment-toggle">
+    <%= link_to "Schedule an appointment", "#", class: "btn btn-primary", data: { action: "click->toggle-appointment#toggleForm" } %>
 
-  <div id="appointment-form" class="d-none" data-toggle-appointment-target="form">
+    <div id="appointment-form" class="d-none" data-toggle-appointment-target="form">
 
-    <%= simple_form_for [@issue, @appointment] do |f| %>
-      <div>
-        <%= f.input :start_time, as: :datetime, html5: true %>
-      </div>
-      <div>
-        <%= f.input :end_time, as: :datetime, html5: true %>
-      </div>
-      <%= f.submit "Create Appointment", class: "btn btn-success" %>
-    <% end %>
-  </div>
-</section>
-</div>
-
-<div class="user-profile mt-5">
-  <h3>Get to know <%= @issue.user.github_name %></h3>
-
-  <%= link_to user_path(@issue.user), class: "user-profile-author" do %>
-    <%= image_tag @issue.user.github_avatar_url, alt: "User photo", class: "user-profile-avatar" %>
-    <div class="d-flex flex-column">
-      <h4><%= @issue.user.github_name %></h4>
-      <p class="text-dark"><%= @issue.user.github_location %></p>
+      <%= simple_form_for [@issue, @appointment] do |f| %>
+        <div>
+          <%= f.input :start_time, as: :datetime, html5: true %>
+        </div>
+        <div>
+          <%= f.input :end_time, as: :datetime, html5: true %>
+        </div>
+        <%= f.submit "Create Appointment", class: "btn btn-success" %>
+      <% end %>
     </div>
-  <% end %>
+  </section>
 </div>

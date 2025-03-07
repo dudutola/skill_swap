@@ -12,17 +12,18 @@ class User < ApplicationRecord
 
   # geocoded_by :github_location
   # after_validation :geocode, if: :github_location_changed?
+  before_validation :set_defaults_for_basic_signup, on: :create
 
   def self.from_omniauth(access_token)
     data = access_token.info
     provider = access_token.provider
     random_string = Devise.friendly_token[0, 6]
     uid = access_token.uid.presence || SecureRandom.uuid
-    location = access_token.extra.raw_info['location'].presence || "Unknown"
+    location = access_token.extra.raw_info['location'].presence || ""
 
     email = data['email'].presence || "user_#{random_string}@email.com"
-    nickname = data['nickname'].presence || "user_#{random_string}"
-    name = data['name'].presence || "No Name #{random_string}"
+    nickname = data['nickname'].presence || email.split('@').first
+    name = data['name'].presence || nickname.capitalize
     image = data['image'].presence || "avataaars.png"
 
     user = User.where(email: data['email']).first
@@ -42,5 +43,16 @@ class User < ApplicationRecord
     end
 
     user
+  end
+
+  def set_defaults_for_basic_signup
+    if provider.blank? || provider == "basic"
+      self.provider ||= "basic"
+      self.uid ||= SecureRandom.uuid
+      self.github_username ||= email.split('@').first
+      self.github_name ||= email.split('@').first.capitalize
+      self.github_avatar_url ||= "avataaars.png"
+      self.github_location ||= ""
+    end
   end
 end

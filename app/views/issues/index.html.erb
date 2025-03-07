@@ -37,7 +37,7 @@
           <img src="<%= issue.user.github_avatar_url %>" class="card-product-avatar green-circle" alt="<%= issue.user.github_name %>" />
           <div class="card-product-infos">
             <div class="d-flex justify-content-between">
-              <h3><%= issue.user.github_name %></h3>
+              <h3><%= issue.user.github_name || issue.user.email.split('@').first.capitalize %></h3>
               <p class="posted-time text-secondary"><%= time_ago_in_words(issue.created_at) %> ago</p>
             </div>
             <h4 class="mb-0"><%= issue.title %></h4>

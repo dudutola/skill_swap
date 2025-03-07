@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon  fixed-top">
   <div class="container-fluid">
     <%= link_to "Skill Swap", root_path, class: "navbar-brand fw-bold" %>
 
@@ -16,6 +16,9 @@
             <a href="#" class="nav-link">
               <i class="fas fa-bell"></i> <!-- Notification Icon -->
             </a>
+          </li>
+          <li>
+            <%= link_to "Give feedback", "https://docs.google.com/forms/d/e/1FAIpQLSd9pLfRf3xBrAwGiYO0rmRHtBrGp2ikKsOFx4vXYThdLb4kfw/viewform?usp=header", class: "btn btn-outline-warning", id: "warning" %>
           </li>
           <li class="nav-item dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
