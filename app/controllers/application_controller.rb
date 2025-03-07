@@ -15,12 +15,12 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-  def after_sign_in_path_for(resource_or_scope)
-    authenticated_root_path(resource_or_scope)
+  def after_sign_in_path_for(resource)
+    issues_path
   end
 
-  def after_sign_up_path_for(resource_or_scope)
-    authenticated_root_path(resource_or_scope)
+  def after_sign_up_path_for(resource)
+    issues_path
   end
 
   private

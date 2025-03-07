@@ -57,7 +57,7 @@ class IssuesController < ApplicationController
     @user = @issue.user
     redirect_to @issue unless @user == current_user
     @issue.destroy
-    redirect_to authenticated_root_path, status: :see_other, notice: "Issue successfully deleted."
+    redirect_to issues_path, status: :see_other, notice: "Issue successfully deleted."
   end
 
   private
