@@ -1,2 +1,11 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="vh-100 d-flex align-items-center bg-dark text-white" data-controller="home-button" id="enter-home">
+  <div class="home-banner-content">
+    <h1 class="fw-bold mb-5"><em>SKILL</em> SWAP</h1>
+    <p class="mb-0">Here, you can be both a learner and a tutor.</p>
+    <p class="mb-4">Find help, share your expertise, and improve your skills along the way.</p>
+
+    <%= link_to "#", class: "btn btn-dark btn-lg mt-3", data: { action: "home-button#changeText" } do %>
+      <span data-home-button-target="linkText">Enter</span>
+    <% end %>
+  </div>
+</div>

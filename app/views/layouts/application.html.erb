@@ -14,12 +14,10 @@
       <%= render "shared/navbar" %>
       <%= render "shared/flashes" %>
 
-
-      <div class="container">
+      <div class="<%= controller_name == 'pages' && action_name == 'home' ? '' : 'container' %>">
         <%= yield %>
       </div>
 
-      <p class="notice"><%= notice %></p>
-      <%= render "shared/footer" %>
-  </body>
+      <%= render "shared/footer" unless controller_name == 'pages' && action_name == 'home' %>
+    </body>
 </html>
