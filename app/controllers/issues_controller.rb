@@ -42,8 +42,7 @@ class IssuesController < ApplicationController
   end
 
   def issue_params
-    params.require(:issue).permit(:title, :description)
+    params.require(:issue).permit(:title, :description, :available_on)
   end
-  
-end
 
+end
