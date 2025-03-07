@@ -6,4 +6,5 @@ class Appointment < ApplicationRecord
   validates :issue, presence: true
   validates :start_time, presence: true
   validates :end_time, presence: true
+  validates :status, inclusion: { in: %w[pending confirmed declined] }
 end

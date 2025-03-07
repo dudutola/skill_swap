@@ -49,6 +49,15 @@
                 <p class="my-1"><strong>Appointment with: </strong> <%= appointment.pupil.github_username.capitalize %></p>
                 <p class="my-1"><strong>Start Time: </strong> <%= appointment.start_time.strftime("%b %d, %Y %H:%M") %></p>
                 <p class="my-1"><strong>End Time: </strong> <%= appointment.end_time.strftime("%b %d, %Y %H:%M") %></p>
+
+                <!-- Appointment Status -->
+                <p class="my-1"><strong>Status: </strong> <%= appointment.status.capitalize %></p>
+
+                <!-- Show Confirm and Decline Buttons only for pending appointments -->
+                <% if appointment.status == "pending" %>
+                  <%= button_to "Confirm", confirm_appointment_path(appointment), method: :patch, class: "btn btn-success me-2" %>
+                  <%= button_to "Decline", decline_appointment_path(appointment), method: :patch, class: "btn btn-danger" %>
+                <% end %>
               </div>
             <% end %>
           </div>
@@ -57,6 +66,7 @@
         <% end %>
       </div>
     </div>
+
 
   </div>
 </div>

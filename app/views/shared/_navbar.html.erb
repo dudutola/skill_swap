@@ -17,6 +17,9 @@
               <i class="fas fa-bell"></i> <!-- Notification Icon -->
             </a>
           </li>
+          <li>
+            <%= link_to "Give feedback", "https://docs.google.com/forms/d/e/1FAIpQLSd9pLfRf3xBrAwGiYO0rmRHtBrGp2ikKsOFx4vXYThdLb4kfw/viewform?usp=header", class: "btn btn-outline-warning", id: "warning" %>
+          </li>
           <li class="nav-item dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= image_tag current_user.github_avatar_url || "avataaars.png", class: "avatar", alt: "dropdown menu" %>
