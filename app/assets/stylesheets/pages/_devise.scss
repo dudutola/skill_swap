@@ -16,11 +16,20 @@
     justify-content: space-between;
     align-items: center;
     gap: 100px;
+    flex-wrap: wrap; // Added for responsiveness
+
+    @media (max-width: 768px) {
+      flex-direction: column; // Stack elements for small screens
+      gap: 20px; // Reduced gap between content
+      padding: 20px; // Add some padding to avoid touching edges
+    }
   }
 
   .welcome-message {
     flex: 1;
     text-align: left;
+    max-width: 600px; 
+    margin: 0 auto; // Center content on smaller screens
   }
 }
 
@@ -34,6 +43,9 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  margin-top: -96px;
+  margin-left: auto;
+  margin-right: auto;
 
   h3 {
     text-align: center;
@@ -43,7 +55,7 @@
 
   .form-inputs {
     margin-bottom: 16px;
-    width: 100%; /* Ensure input fields are full width */
+    width: 100%; 
   }
 
   .form-inputs label {
@@ -54,10 +66,14 @@
   .form-inputs .password-field label {
     color: rgb(103, 103, 103);
   }
+
+  @media (max-width: 768px) {
+    max-width: 90%; 
+    margin-top: 0; 
+  }
 }
 
 // Global button styling
-
 .button-style {
   color: white !important;
   background: black !important;
@@ -86,7 +102,6 @@ body input[type="button"],
 body input[type="reset"] {
   @extend .button-style;
 }
-
 
 /* "Remember me" checkbox */
 body .form-check {
@@ -123,13 +138,13 @@ body .form-check-input:checked {
   border-color: black !important;
 }
 
-
 /* Focus styling */
 body .form-check-input:focus {
   outline: none !important;
   box-shadow: none !important;
   border-color: black !important;
 }
+
 
 
 
