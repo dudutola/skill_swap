@@ -18,7 +18,7 @@ export default class extends Controller {
     setInterval(() => {
       const currentText = this.linkTextTarget.textContent;
       if (currentText === "Enter") {
-        this.setLinkText("Sign Up", "/users/sign_up");
+        this.setLinkText("Sign In", "/users/sign_in");
       } else if (currentText === "Sign Up") {
         this.setLinkText("Sign In", "/users/sign_in");
       } else if (currentText === "Share Skill") {
