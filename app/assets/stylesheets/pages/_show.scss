@@ -99,6 +99,25 @@
 //   }
 // }
 
+#button-appointment {
+  padding: 8px 16px;
+  background-color: #a7bca2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  // max-width: 200px;
+  margin: 0 auto;
+  font-size: 1.1em;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #7e9678;
+  }
+}
+
 .user-profile {
   & h3 {
     font-weight: bold;

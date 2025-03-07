@@ -37,7 +37,7 @@
   </section>
 
   <section data-controller="toggle-appointment" class="appointment-toggle">
-    <%= link_to "Schedule an appointment", "#", class: "btn btn-primary", data: { action: "click->toggle-appointment#toggleForm" } %>
+    <%= link_to "Schedule an appointment", "#", class: "btn btn-primary", id: "button-appointment", data: { action: "click->toggle-appointment#toggleForm" } %>
 
     <div id="appointment-form" class="d-none" data-toggle-appointment-target="form">
 
