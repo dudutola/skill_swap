@@ -37,25 +37,29 @@
    <!-- Appointments Section -->
   <div class="profile-appointments">
     <h3>My Appointments</h3>
-    <div class="appointments-list">
-      <% if @user.appointments.any? %>
-        <ul class="list-unstyled">
-          <% @user.appointments.each do |appointment| %>
-            <li>
-              <p><strong>Appointment with: </strong> <%= appointment.tutor.github_username %></p>
-              <p><strong>Start Time: </strong> <%= appointment.start_time.strftime("%b %d, %Y %H:%M") %></p>
-              <p><strong>End Time: </strong> <%= appointment.end_time.strftime("%b %d, %Y %H:%M") %></p>
+
+    <% if @appointments.any? %>
+      <ul class="list-unstyled">
+        <% @appointments.each do |appointment| %>
+          <% if appointment.tutor == @user %>
+            <%# when you are tutor %>
+            <li class="bg-light-subtle">
+              <p><strong>Help</strong> <%= appointment.pupil.github_name %>, from  <%= appointment.start_time.strftime("%b %d, %Y %H:%M") %> to <%= appointment.end_time.strftime("%b %d, %Y %H:%M") %></p>
+            </li>
+          <% else %>
+            <%# when you are pupil %>
+            <li class="bg-light-subtle">
+              <p><strong>Get help from</strong> <%= appointment.tutor.github_name %>, from  <%= appointment.start_time.strftime("%b %d, %Y %H:%M") %> to <%= appointment.end_time.strftime("%b %d, %Y %H:%M") %></p>
             </li>
           <% end %>
-        </ul>
-      <% else %>
-        <p>No appointments scheduled yet.</p>
-      <% end %>
-    </div>
+        <% end %>
+      </ul>
+    <% end %>
   </div>
 
   <%# <div class="profile-map">
     <h3>View Location</h3>
     <div id="map" style="height: 400px;"></div>
-  </div> %>
+  </div>
+  <p>testing code</p> %>
 </div>
