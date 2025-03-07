@@ -1,5 +1,5 @@
 class IssuesController < ApplicationController
-  before_action :set_issue, only: [:show, :edit, :update]
+  before_action :set_issue, only: [:show, :edit, :update, :destroy]
 
   def index
     @issues = Issue.order(created_at: :desc)
@@ -25,6 +25,8 @@ class IssuesController < ApplicationController
   end
 
   def edit
+    @user = @issue.user
+    redirect_to @issue unless @user == current_user
   end
 
   def update
@@ -33,6 +35,13 @@ class IssuesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @user = @issue.user
+    redirect_to @issue unless @user == current_user
+    @issue.destroy
+    redirect_to @issue.user, status: :see_other, notice: "Issue successfully deleted." 
   end
 
   private

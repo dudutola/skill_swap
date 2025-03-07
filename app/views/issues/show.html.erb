@@ -31,6 +31,9 @@
       <%= link_to edit_issue_path(@issue) do %>
         <i class="fas fa-edit"></i>
       <% end %>
+       <%= link_to issue_path(@issue), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "delete-button" do %>
+       <i class="fas fa-trash-alt"></i> 
+       <% end %>
     <% end %>
 
     </div>
