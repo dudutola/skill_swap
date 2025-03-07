@@ -8,9 +8,10 @@
       <%= link_to user_path(@issue.user), class: "user-profile-author" do %>
         <%= image_tag @issue.user.github_avatar_url, alt: "User photo", class: "user-avatar" %>
         <div class="d-flex flex-column">
-          <h2 class="text-dark fs-4 text-decoration-underline fw-bold"><%= @issue.user.github_name %></h2>
+          <h2 class="text-dark fs-4 text-decoration-underline fw-bold"><%= @issue.user.github_name || @issue.user.email.split('@').first.capitalize %></h2>
           <p class="text-dark"><%= @issue.user.github_location %></p>
         </div>
+
       <% end %>
     </div>
 
