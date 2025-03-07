@@ -38,7 +38,16 @@
           <div class="card-product-infos">
             <div class="d-flex justify-content-between">
               <h3><%= issue.user.github_name || issue.user.email.split('@').first.capitalize %></h3>
-              <p class="posted-time text-secondary"><%= time_ago_in_words(issue.created_at) %> ago</p>
+              <div>
+                <p class="posted-time text-secondary text-end"><%= time_ago_in_words(issue.created_at) %> ago</p>
+                <div>
+                  <% issue.tags.each do |tag| %>
+                    <span class="badge <%= tag.name.downcase %>">
+                      <%= tag.name %>
+                    </span>
+                  <% end %>
+                </div>
+              </div>
             </div>
             <h4 class="mb-0"><%= issue.title %></h4>
             <p><%= truncate(issue.description, length: 100) %></p>
