@@ -6,7 +6,7 @@ class IssuesController < ApplicationController
   end
 
   def show
-    authorize @issue  
+    authorize @issue
     @appointment = Appointment.new
   end
 
@@ -57,7 +57,7 @@ class IssuesController < ApplicationController
     @user = @issue.user
     redirect_to @issue unless @user == current_user
     @issue.destroy
-    redirect_to root_path, status: :see_other, notice: "Issue successfully deleted." 
+    redirect_to authenticated_root_path, status: :see_other, notice: "Issue successfully deleted."
   end
 
   private
