@@ -80,3 +80,5 @@ gem "omniauth-github", "~> 2.0.0"
 gem "omniauth-rails_csrf_protection"
 gem "faker"
 gem "geocoder"
+gem 'pundit'
+
