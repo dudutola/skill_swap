@@ -8,12 +8,20 @@ class ApplicationController < ActionController::Base
 
   # Skip Pundit for Devise controllers and other exceptions
 
-  
+
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/ || params[:controller] == "users"
   end
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
+  def after_sign_in_path_for(resource_or_scope)
+    authenticated_root_path(resource_or_scope)
+  end
+
+  def after_sign_up_path_for(resource_or_scope)
+    authenticated_root_path(resource_or_scope)
+  end
 
   private
 
