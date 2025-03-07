@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   # geocoded_by :github_location
   # after_validation :geocode, if: :github_location_changed?
-  before_validation :set_defaults_for_basic_signup, on: :create
+  # before_validation :set_defaults_for_basic_signup, on: :create
 
   def self.from_omniauth(access_token)
     data = access_token.info
@@ -45,14 +45,14 @@ class User < ApplicationRecord
     user
   end
 
-  def set_defaults_for_basic_signup
-    if provider.blank? || provider == "basic"
-      self.provider ||= "basic"
-      self.uid ||= SecureRandom.uuid
-      self.github_username ||= email.split('@').first
-      self.github_name ||= email.split('@').first.capitalize
-      self.github_avatar_url ||= "avataaars.png"
-      self.github_location ||= ""
-    end
-  end
+  # def set_defaults_for_basic_signup
+  #   if provider.blank? || provider == "basic"
+  #     self.provider ||= "basic"
+  #     self.uid ||= SecureRandom.uuid
+  #     self.github_username ||= email.split('@').first
+  #     self.github_name ||= email.split('@').first.capitalize
+  #     self.github_avatar_url ||= "avataaars.png"
+  #     self.github_location ||= ""
+  #   end
+  # end
 end

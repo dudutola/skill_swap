@@ -8,7 +8,6 @@ Bundler.require(*Rails.groups)
 
 module SkillSwap
   class Application < Rails::Application
-    config.action_controller.raise_on_missing_callback_actions = false if Rails.version >= "7.1.0"
     config.generators do |generate|
       generate.assets false
       generate.helper false
@@ -17,6 +16,7 @@ module SkillSwap
 
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
+    config.action_controller.raise_on_missing_callback_actions = false
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.

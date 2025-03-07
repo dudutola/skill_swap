@@ -13,6 +13,16 @@
 User.destroy_all
 Issue.destroy_all
 
+# Tags
+tags = ["Variables", "Ruby", "Rails", "CSS", "HTML", "Terminal", "VSCode", "JavaScript", "Linux", "PostgreSQL"]
+
+tags.each do |tag_name|
+  Tag.find_or_create_by(name: tag_name)
+end
+
+puts "✅ Tags seeded successfully!"
+
+
 10.times do
   user = User.create!(
     email: Faker::Internet.email,
@@ -38,6 +48,8 @@ issues = [
   { title: "Unable to Deploy to Heroku", description: "I’ve tried deploying my app to Heroku, but I’m getting a 'push rejected' error. The logs don’t provide much detail, and I’m not sure how to resolve it." , available_on: "Sunday, from 4 PM to 6 PM UTC" },
 ]
 
+tags = Tag.all
+
 issues.each do |issue|
   user = User.all.sample
 
@@ -46,8 +58,12 @@ issues.each do |issue|
     title: issue[:title],
     description: issue[:description],
     available_on: issue[:available_on],
+    tags: tags.sample(2),
     created_at: Faker::Time.backward(days: 14, period: :evening)
   )
+
+  # issue_record.tags = tags.sample(2)
+
   puts "Created issue for #{user.github_name}: #{issue[:title]}"
 end
 
