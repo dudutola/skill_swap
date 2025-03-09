@@ -15,58 +15,62 @@
   </div>
 </div>
 
-<div class="profile-container d-flex justify-content-between m-5" data-controller="toggle">
-  <div class="d-flex flex-column w-100">
+<div class="profile-container m-5" data-controller="toggle">
+  <%# add the 2 titles %>
+  <%# add action to them %>
+  <%# target their content %>
+  <%# appointments d-none per default %>
 
-    <!-- My Offers Section -->
-    <div class="profile-offers border rounded p-3 mb-3 shadow-sm">
-      <h3 class="toggle-header fw-bold" data-action="click->toggle#toggle" data-target="offers-content">My Issues</h3>
-      <p class="text-muted">Click to view the issues you have created.</p>
-      <div id="offers-content" data-toggle-target="content" class="toggle-content d-none">
-        <% if current_user.issues.any? %>
-          <ul class="list-unstyled">
-            <% current_user.issues.each do |issue| %>
-              <li>-
-                <%= link_to issue.title, issue_path(issue) %>
-              </li>
-            <% end %>
-          </ul>
-        <% else %>
-          <p>No issues yet.</p>
+  <div class="d-flex content-name">
+    <h3 class="toggle-header fw-bold underline"
+    data-toggle-target="issuesHeader"
+    data-action="click->toggle#toggle"
+    data-value="issues">My Issues</h3>
+
+    <h3 class="toggle-header fw-bold"
+    data-action="click->toggle#toggle"
+    data-toggle-target="appointmentsHeader"
+    data-value="appointments">Tutoring</h3>
+  </div>
+
+  <!-- My issues Section -->
+  <div id="offers-content" data-toggle-target="issuesContent" class="toggle-content">
+    <% if current_user.issues.any? %>
+      <ul class="list-unstyled">
+        <% current_user.issues.each do |issue| %>
+          <li>-
+            <%= link_to issue.title, issue_path(issue) %>
+          </li>
         <% end %>
-      </div>
-    </div>
+      </ul>
+    <% else %>
+      <p>No issues yet.</p>
+    <% end %>
+  </div>
 
-    <!-- Appointments Section -->
-    <div class="profile-appointments border rounded p-3 shadow-sm">
-      <h3 class="toggle-header fw-bold" data-action="click->toggle#toggle" data-target="appointments-content">Tutoring</h3>
-      <p class="text-muted">Click to view your scheduled appointments.</p>
-      <div id="appointments-content" data-toggle-target="content" class="toggle-content d-none">
-        <% if current_user.given_appointments.any? %>
-          <div class="appointments-container">
-            <% current_user.given_appointments.each do |appointment| %>
-              <div class="appointment-card mb-3 py-2 px-4 border rounded shadow-sm">
-                <p class="my-1"><strong>Appointment with: </strong> <%= appointment.pupil.github_username.capitalize %></p>
-                <p class="my-1"><strong>Start Time: </strong> <%= appointment.start_time.strftime("%b %d, %Y %H:%M") %></p>
-                <p class="my-1"><strong>End Time: </strong> <%= appointment.end_time.strftime("%b %d, %Y %H:%M") %></p>
+  <!-- Appointments Section -->
+  <div id="appointments-content" data-toggle-target="appointmentsContent" class="toggle-content d-none">
+    <% if current_user.given_appointments.any? %>
+      <div class="appointments-container">
+        <% current_user.given_appointments.each do |appointment| %>
+          <div class="appointment-card mb-3 py-2 px-4 border rounded shadow-sm">
+            <p class="my-1"><strong>Appointment with: </strong> <%= appointment.pupil.github_username.capitalize %></p>
+            <p class="my-1"><strong>Start Time: </strong> <%= appointment.start_time.strftime("%b %d, %Y %H:%M") %></p>
+            <p class="my-1"><strong>End Time: </strong> <%= appointment.end_time.strftime("%b %d, %Y %H:%M") %></p>
 
-                <!-- Appointment Status -->
-                <p class="my-1"><strong>Status: </strong> <%= appointment.status.capitalize %></p>
+            <!-- Appointment Status -->
+            <p class="my-1"><strong>Status: </strong> <%= appointment.status.capitalize %></p>
 
-                <!-- Show Confirm and Decline Buttons only for pending appointments -->
-                <% if appointment.status == "pending" %>
-                  <%= button_to "Confirm", confirm_appointment_path(appointment), method: :patch, class: "btn btn-success me-2" %>
-                  <%= button_to "Decline", decline_appointment_path(appointment), method: :patch, class: "btn btn-danger" %>
-                <% end %>
-              </div>
+            <!-- Show Confirm and Decline Buttons only for pending appointments -->
+            <% if appointment.status == "pending" %>
+              <%= button_to "Confirm", confirm_appointment_path(appointment), method: :patch, class: "btn btn-success me-2" %>
+              <%= button_to "Decline", decline_appointment_path(appointment), method: :patch, class: "btn btn-danger" %>
             <% end %>
           </div>
-        <% else %>
-          <p>No tutoring scheduled yet.</p>
         <% end %>
       </div>
-    </div>
-
-
+    <% else %>
+      <p>No tutoring scheduled yet.</p>
+    <% end %>
   </div>
 </div>
