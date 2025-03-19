@@ -12,7 +12,30 @@ class User < ApplicationRecord
 
   # geocoded_by :github_location
   # after_validation :geocode, if: :github_location_changed?
-  # before_validation :set_defaults_for_basic_signup, on: :create
+  validates :email, presence: true, uniqueness: true
+  validates :password, presence: true
+  validates :github_avatar_url, presence: true
+  validates :github_username, presence: true
+  validates :github_name, presence: true
+  validates :github_uid, presence: true, uniqueness: true
+  validates :provider, presence: true
+
+  before_validation :set_defaults_for_basic_signup, on: :create
+  after_validation :log_errors
+
+  def log_errors
+    Rails.logger.error "Validation failed: #{errors.full_messages.join(', ')}"
+  end
+
+  def set_defaults_for_basic_signup
+    if self.email
+      self.provider ||= "basic"
+      self.github_uid ||= SecureRandom.uuid
+      self.github_username ||= email.split('@').first
+      self.github_name ||= email.split('@').first.capitalize
+      self.github_avatar_url ||= "avataaars.png"
+    end
+  end
 
   def self.from_omniauth(access_token)
     data = access_token.info
@@ -26,7 +49,9 @@ class User < ApplicationRecord
     name = data['name'].presence || nickname.capitalize
     image = data['image'].presence || "avataaars.png"
 
-    user = User.where(email: data['email']).first
+    # debugger
+    # user = User.where(email: data['email']).first
+    user = User.find_by(github_username: data['nickname'])
 
     # Uncomment the section below if you want users to be created if they don't exist
     unless user
@@ -44,6 +69,7 @@ class User < ApplicationRecord
 
     user
   end
+
 
   # def set_defaults_for_basic_signup
   #   if provider.blank? || provider == "basic"
